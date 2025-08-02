@@ -21,6 +21,9 @@ do
 	  # Trim the "v" prefix
 	  trimmed_version=${version/#"v"}
 
-      mv apps/$app_name/$old_version apps/$app_name/$trimmed_version
+	  # Only move if the versions are different
+	  if [[ "$old_version" != "$trimmed_version" ]]; then
+	      mv apps/$app_name/$old_version apps/$app_name/$trimmed_version
+	  fi
     fi
 done
