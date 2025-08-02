@@ -1,0 +1,19 @@
+services:
+  twikoo:
+    container_name: ${CONTAINER_NAME}
+    image: imaegoo/twikoo:1.6.44
+    restart: always
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8080
+    networks:
+      - corapanel-network
+    volumes:
+      - ./data:/app/data
+    environment:
+      - "TWIKOO_THROTTLE=1000"
+      - "TWIKOO_PORT=8080"
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

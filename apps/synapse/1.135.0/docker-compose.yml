@@ -1,0 +1,29 @@
+services:
+  synapse:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    volumes:
+      - synapse-data:/data
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:8008"
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - UID=1000
+      - GID=1000
+    image: matrixdotorg/synapse:v1.135.0
+    logging:
+      options:
+        max-size: "10m"
+    command: run -m synapse.app.homeserver --config-path=/data/homeserver.yaml
+    labels:  
+      createdBy: "Apps"
+
+volumes:
+  synapse-data:
+    external: true
+
+networks:  
+  corapanel-network:  
+    external: true

@@ -1,0 +1,15 @@
+services:
+  sentinel-dashboard:
+    image: bladex/sentinel-dashboard:1.8.8
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:  
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8858
+      - ${PANEL_APP_PORT_COMMUNICATION}:8719
+    labels:  
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

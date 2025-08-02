@@ -1,0 +1,14 @@
+services:
+  web-check:
+    container_name: ${CONTAINER_NAME}
+    image: lissy93/web-check:1.0.0
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:3000
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

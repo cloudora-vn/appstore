@@ -1,0 +1,14 @@
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:1.71.0
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:16686
+    networks:
+      - corapanel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

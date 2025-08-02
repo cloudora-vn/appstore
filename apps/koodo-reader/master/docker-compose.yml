@@ -1,0 +1,14 @@
+services:
+  koodo-reader:
+    image: ghcr.io/koodo-reader/koodo-reader:master
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:80
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

@@ -1,0 +1,46 @@
+additionalProperties:
+    supportVersion: 2.0
+    formFields:
+        - default: 80
+          envKey: PANEL_APP_PORT_HTTP
+          labelEn: HTTP Port
+          labelZh: HTTP 端口
+          required: true
+          type: number
+          label:
+            en: HTTP Port
+            ja: HTTP ポート
+            ms: Port HTTP
+            pt-br: Porta HTTP
+            ru: HTTP Порт
+            zh-Hant: HTTP 端口
+            zh: HTTP 端口
+        - default: 443
+          envKey: PANEL_APP_PORT_HTTPS
+          labelEn: HTTPS Port
+          labelZh: HTTPS 端口
+          required: true
+          type: number
+          label:
+            en: HTTPS Port
+            ja: HTTPS ポート
+            ms: Port HTTPS
+            pt-br: Porta HTTPS
+            ru: HTTPS Порт
+            zh-Hant: HTTPS 端口
+            zh: HTTPS 端口
+        - default: www
+          envKey: WEBSITE_DIR
+          labelEn: Website Dir
+          labelZh: 网站目录(默认网站目录会放置在 CoraPanel 安装目录下，如需修改请以绝对路径填写)
+          required: true
+          type: text
+          label:
+            en: Website directory (The website directory will be placed under the CoraPanel installation directory)
+            ja: ウェブサイトディレクトリ（ウェブサイトディレクトリは CoraPanel インストールディレクトリに配置されます）
+            ms: Direktori laman web (Direktori laman web akan diletakkan di bawah direktori pemasangan CoraPanel)
+            pt-br: Diretório do site (O diretório do site será colocado sob o diretório de instalação do CoraPanel)
+            ru: Директория сайта (Директория сайта будет размещена в каталоге установки CoraPanel)
+            zh-Hant: 網站目錄（網站目錄將放置在 CoraPanel 安裝目錄下）
+            zh: 网站目录(默认网站目录会放置在 CoraPanel 安装目录下，如需修改请以绝对路径填写)
+

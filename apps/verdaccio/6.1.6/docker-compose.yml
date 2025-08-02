@@ -1,0 +1,20 @@
+services:
+  verdaccio:
+    image: verdaccio/verdaccio:6.1.6
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    environment:
+      - VERDACCIO_PORT=${PANEL_APP_PORT_HTTP}
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:${PANEL_APP_PORT_HTTP}
+    volumes:
+      - ./data/storage:/verdaccio/storage
+      - ./data/config:/verdaccio/conf
+      - ./data/plugins:/verdaccio/plugins
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

@@ -1,0 +1,14 @@
+services:
+  yesplaymusic:
+    image: fogforest/yesplaymusic:0.4.9
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:80"
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

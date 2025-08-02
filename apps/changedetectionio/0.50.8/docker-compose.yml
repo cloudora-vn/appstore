@@ -1,0 +1,17 @@
+services:
+  changedetection:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:5000"
+    volumes:
+      - "./data:/datastore"
+    image: dgtlmoon/changedetection.io:0.50.8
+    labels:  
+      createdBy: "Apps"
+
+networks:  
+  corapanel-network:  
+    external: true

@@ -1,0 +1,20 @@
+services:
+  audiobookshelf:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:80"
+    volumes:
+      - "./data/audiobooks:/audiobooks"
+      - "./data/podcasts:/podcasts"
+      - "./data/config:/config"
+      - "./data/metadata:/metadata"
+    image: advplyr/audiobookshelf:2.26.3
+    labels:  
+      createdBy: "Apps"
+
+networks:  
+  corapanel-network:  
+    external: true

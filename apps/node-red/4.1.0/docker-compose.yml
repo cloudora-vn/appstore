@@ -1,0 +1,19 @@
+services:
+  node-red:
+    image: nodered/node-red:4.1.0
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    user: root
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:1880
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ./data:/data
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

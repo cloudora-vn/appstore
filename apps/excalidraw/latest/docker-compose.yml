@@ -1,0 +1,14 @@
+services:
+  excalidraw:
+    image: excalidraw/excalidraw:latest
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:80
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

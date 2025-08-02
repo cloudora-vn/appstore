@@ -1,0 +1,23 @@
+services:
+  code:
+    image: linuxserver/code-server:4.102.3
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:8443"
+    volumes:
+      - ./data:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+      - PASSWORD=${WEB_PASSWORD}
+      - SUDO_PASSWORD=${SUDO_PASSWORD}
+      - DEFAULT_WORKSPACE=/config/workspace
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

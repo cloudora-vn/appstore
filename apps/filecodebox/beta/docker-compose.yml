@@ -1,0 +1,16 @@
+services:
+  filecodebox:
+    container_name: ${CONTAINER_NAME}
+    image: lanol/filecodebox:beta
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:12345"
+    volumes:
+      - "./data:/app/data"
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

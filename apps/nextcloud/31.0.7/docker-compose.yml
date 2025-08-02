@@ -1,0 +1,21 @@
+services:
+  nextcloud:
+    image: linuxserver/nextcloud:31.0.7
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTPS}:443"
+    volumes:
+      - "./data/config:/config"
+      - "./data/data:/data"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIME_ZONE}
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

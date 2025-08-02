@@ -1,0 +1,16 @@
+services:
+  bitwarden:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:80"
+    volumes:
+      - ./data:/data
+    image: vaultwarden/server:1.34.3-alpine
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

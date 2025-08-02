@@ -1,0 +1,18 @@
+services:
+  lskypro:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    volumes:
+      - ./data:/var/www/html/
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:8089"
+    environment:
+      - "WEB_PORT=8089"
+    image: halcyonazure/lsky-pro-docker:latest
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

@@ -1,0 +1,14 @@
+services:
+  jsonhero:
+    container_name: ${CONTAINER_NAME}
+    image: henryclw/jsonhero-web:latest
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8787
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

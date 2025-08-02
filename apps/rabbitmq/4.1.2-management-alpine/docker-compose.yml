@@ -1,0 +1,22 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.1.2-management-alpine
+    hostname: rabbitmq
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    ports:
+        - ${PANEL_APP_PORT_SERVICE}:5672
+        - ${PANEL_APP_PORT_HTTP}:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    volumes:
+        - ./data/:/var/lib/rabbitmq/
+        - ./log/:/var/log/rabbitmq
+    networks:
+      - corapanel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

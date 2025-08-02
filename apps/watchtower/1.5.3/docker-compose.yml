@@ -1,0 +1,18 @@
+services:
+  watchtower:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - ${ENV1}
+    command: ${COMMAND1}
+    image: containrrr/watchtower
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

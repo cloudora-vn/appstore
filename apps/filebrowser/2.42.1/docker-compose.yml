@@ -1,0 +1,18 @@
+services:
+  filebrowser:
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:80
+    volumes:
+      - ${MOUNT_PATH}:/srv
+      - ./config:/config
+      - ./database:/database
+    image: filebrowser/filebrowser:v2.42.1
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

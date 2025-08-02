@@ -1,0 +1,18 @@
+services:
+  homeassistant:
+    image: n8nio/n8n:1.105.2
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:5678
+    volumes:
+      - ./data:/home/node/.n8n
+    environment:
+      N8N_SECURE_COOKIE: false
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

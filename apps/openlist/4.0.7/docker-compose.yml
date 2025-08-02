@@ -1,0 +1,23 @@
+services:
+  openlist:
+    image: ${OPENLIST_IMAGE}
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:5244"
+      - "${PANEL_APP_PORT_S3}:5246"
+    volumes:
+      - ./data:/opt/openlist/data
+    environment:
+      - TZ=${TIME_ZONE}
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true
+

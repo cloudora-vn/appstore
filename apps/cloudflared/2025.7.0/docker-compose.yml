@@ -1,0 +1,12 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:2025.7.0
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    network_mode: corapanel-network
+    command: tunnel --no-autoupdate run --token ${token}
+    labels:  
+      createdBy: "Apps"
+networks:
+    corapanel-network:
+        external: true

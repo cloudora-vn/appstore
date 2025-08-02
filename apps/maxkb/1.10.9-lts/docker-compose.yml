@@ -1,0 +1,17 @@
+services:
+  maxkb:
+    image: corapanel/maxkb:v1.10.9-lts
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8080
+    networks:
+      - corapanel-network
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./python-packages:/opt/maxkb/app/sandbox/python-packages
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

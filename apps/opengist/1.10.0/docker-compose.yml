@@ -1,0 +1,16 @@
+services:
+  opengist:
+    image: ghcr.io/thomiceli/opengist:1.10.0
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    networks:  
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:6157
+    volumes:
+      - ./data:/opengist
+    labels:  
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

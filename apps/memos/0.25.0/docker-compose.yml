@@ -1,0 +1,16 @@
+services:
+  memos:
+    image: neosmemo/memos:0.25.0
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:5230
+    volumes:
+      - ./memos:/var/opt/memos
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

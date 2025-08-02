@@ -1,0 +1,14 @@
+services:
+  kkfileview:
+    container_name: ${CONTAINER_NAME}
+    image: keking/kkfileview:4.1.0
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8012
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

@@ -1,0 +1,18 @@
+services:
+  nexus:
+    image: sonatype/nexus3:3.82.0
+    restart: always
+    container_name: ${CONTAINER_NAME}
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8081
+    volumes:
+      - ./data:/nexus-data
+    networks:
+      - corapanel-network
+    labels:
+      createdBy: "Apps"
+networks:
+  corapanel-network:
+    external: true

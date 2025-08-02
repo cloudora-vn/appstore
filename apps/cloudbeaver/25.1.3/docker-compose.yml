@@ -1,0 +1,16 @@
+services:
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:25.1.3
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    networks:
+      - corapanel-network
+    ports:
+      - ${PANEL_APP_PORT_HTTP}:8978
+    volumes:
+      - ./data:/opt/cloudbeaver/workspace
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true

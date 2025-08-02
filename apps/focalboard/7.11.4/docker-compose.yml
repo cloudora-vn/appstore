@@ -1,0 +1,17 @@
+services:
+  focalboard:
+    image: mattermost/focalboard:7.11.4
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    networks:
+      - corapanel-network
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:8000"
+    volumes:
+      - ./data/config.json:/opt/focalboard/config.json
+      - ./data/data:/opt/focalboard/data
+    labels:  
+      createdBy: "Apps"
+networks:  
+  corapanel-network:  
+    external: true
