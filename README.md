@@ -1,0 +1,2 @@
+# appstore
+Appstore for CoraPanel
