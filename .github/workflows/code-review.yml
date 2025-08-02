@@ -1,4 +1,4 @@
-name: Code Review
+name: LLM Code Review
 
 permissions:
   contents: read
@@ -21,13 +21,12 @@ jobs:
           LANGUAGE: English
           OPENAI_API_ENDPOINT: https://api.perplexity.ai/v1 # https://platform.openai.com/docs/api-reference/chat/create
           MODEL: sonar # https://platform.openai.com/docs/models
-          PROMPT: # example: Please check if there are any confusions or irregularities in the following code diff:
+          PROMPT: "Please check the following code differences for any irregularities, potential issues, or optimization suggestions, and provide your answers in English."
           top_p: 0.9 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p
           temperature: 0.4 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
-          max_tokens: 4000
           MAX_PATCH_LENGTH: 10000 # if the patch/diff length is large than MAX_PATCH_LENGTH, will be ignored and won't review. By default, with no MAX_PATCH_LENGTH set, there is also no limit for the patch/diff length.
-          IGNORE_PATTERNS: /node_modules/**/*,*.md # glob pattern or regex pattern to ignore files, separated by comma
-          INCLUDE_PATTERNS: *.js,*.ts # glob pattern or regex pattern to include files, separated by comma
+          IGNORE_PATTERNS: "/node_modules,*.md,/dist,/.github"
+          FILE_PATTERNS: "*.java,*.go,*.py,*.vue,*.ts,*.js,*.css,*.scss,*.html,*.yml,*.yaml"
 
           # IF you are using azure openai
           AZURE_API_VERSION: xx
