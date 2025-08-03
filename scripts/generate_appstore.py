@@ -202,6 +202,7 @@ class AppStoreGenerator:
     def save(self, data: Dict[str, Any]):
         """Save the generated data to appstore.json"""
         with open(self.output_file, 'w', encoding='utf-8') as f:
+            # Save with proper formatting first (for debugging if needed)
             json.dump(data, f, indent=2, ensure_ascii=False)
 
 def main():
