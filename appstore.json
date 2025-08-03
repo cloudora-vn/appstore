@@ -1,0 +1,13 @@
+{
+  "valid": true,
+  "violations": [],
+  "id": "corapanel",
+  "icon": "https://cdn-icons-png.flaticon.com/512/4187/4187336.png",
+  "lastModified": 1754113212,
+  "name": "CoraPANEL",
+  "title": "Official Appstore for CoraPANEL",
+  "extra": {
+    "version": "v1.0.0"
+  },
+  "apps": []
+}
